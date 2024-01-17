@@ -4,7 +4,7 @@
 
 <main>
   <h1><%= title %></h1>
-  <form id="new-form" action="" method="">
+  <form id="new-form" action="/flights" method="POST">
     <label for="airline-select">Airline:</label>
     <select name="airline" id="airline-select">
       <option></option>
@@ -21,11 +21,11 @@
       <option value="SAN">SAN</option>
     </select>
     <label for="flight-number-input">Flight Number:</label>
-    <input type="number" name="flightNo" id="flight-number-input">
-    <label for="date-input">Date:</label>
+    <input type="number" max=9999 min=10  name="flightNo" id="flight-number-input">
+    <label for="date-input">Depart Date:</label>
     <input type="datetime-local" 
       name="departs" 
-      min="2024-01-20T00:00" 
+      min="2024-01-20T09:00" 
       id="date-input">
     <button type="submit">Submit</button>
   </form>
