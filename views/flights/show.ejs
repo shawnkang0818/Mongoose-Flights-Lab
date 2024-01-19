@@ -8,7 +8,9 @@
     <div>Airline: </div>
     <div>
       <%= flight.airline %>
-      <a href="/flights/<%= flight._id %>/edit"><button> Edit Flight</button></a>
+      <a href="/flights/<%= flight._id %>/edit">
+        <button> Edit Flight</button>
+      </a>
     </div>
     <div>Airport: </div>
     <div><%=flight.airport %></div>
@@ -16,7 +18,24 @@
     <div><%= flight.flightNo %></div>
     <div>Dpart Date: </div>
     <div><%= flight.departs.toLocaleString() %></div>
+    <div>Meal:</div>
+    <ul>
+      <% flight.cast.forEach(castMember => { %>
+        <li><%= castMember.name %></li>
+      <% }) %>
+    </ul>
+  <%# end cast list %>  
   </section>
+
+  <%# add to cast form below this comment %>
+  <form id="add-meal-to-cast" action="/flights/<%= flight._id %>/meals" method="POST">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to Cast</button>
+  </form>
   <h2>Ticket</h2>
   <% if (flight.tickets.length) { %>
     <table>
